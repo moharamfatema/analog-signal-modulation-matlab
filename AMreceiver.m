@@ -2,15 +2,18 @@ function [msc,mtc] = AMreceiver(dsbsc,dsbtc,info,fc)
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 
+t = 0:1/info.SampleRate:info.Duration;
+
 msc = abs(hilbert(dsbsc));
 mtc = abs(hilbert(dsbtc));
 
 [p , q] = rat(info.SampleRate / (5*fc));
 msc = resample(msc,p,q);
 mtc = resample(mtc,p,q);
+mtc = lowpass(mtc,4000,info.SampleRate);
 
 %plotting in time domain
-t = 0:info.SampleRate:info.Duration;
+
 
 % f = figure('Name','Amplitude Demodulation');
 % subplot(2,1,1);
@@ -22,6 +25,12 @@ t = 0:info.SampleRate:info.Duration;
 % title('DSB-TC with envelope detector');
 % 
 % sgtitle('Amplitude Demodulation');
+c = cos(2*pi*fc*t);
+msc = resample(dsbsc,p,q);
+msc = msc.*c;
+%amplify and filter
+msc = 10000.*lowpass(msc,4000,info.SampleRate);
 
+%plotTimeFrequency(msc,"DSBSC coherent",1,1,1,info);
 end
 
