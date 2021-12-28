@@ -6,12 +6,10 @@ t = 0:info.SampleRate:info.Duration;
 plot(t,messageTime);
 title(name , ' in Time Domain');
 
-subplot(rows,columns,no+columns);
-plot(real(fft(messageTime)));
-title(name , ' in Frequency Domain');
+f = abs(fftshift(fft(messageTime)));
 
-subplot(rows,columns,no+columns*2);
-plot(real(fftshift(fft(messageTime))));
+subplot(rows,columns,no+columns);
+plot(f);
 title(strcat('Normalized ', name ),' in Frequency Domain');
 end
 

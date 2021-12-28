@@ -3,7 +3,7 @@ function [] = plotNineTimeFrequency(m1,m2,m3,info,groupName,name1,name2,name3)
 %   Detailed explanation goes here
     
     f = figure('Name',groupName);
-    f.WindowState = 'fullscreen';
+    %f.WindowState = 'fullscreen';
     subplot(3,3,1);
     
     plotTimeFrequency(m1,name1,3,3,1,info);
