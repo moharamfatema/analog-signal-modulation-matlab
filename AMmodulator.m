@@ -7,15 +7,14 @@ function [dsbsc,dsbtc] = AMmodulator(m,info,fc)
     %sound(m,fs);
 
     %resample m
-    [p,q] = rat(5.*fc/fs);
+   [p,q] = rat(5.*fc/fs);
     m = resample(m,p,q);
     fs = fs * p / q;
 
     %generate carrier
-    t = 0:1/fs:info.Duration;
+    c = generateSignal(info, fs, fc, 0);
     am = max(m);
     ac = am / 0.5;
-    c = cos(2*pi*fc*t);
 
     dsbsc = m'.*c;
     dsbtc = (ac * ( 1 + 0.5 * m')) .* c;
