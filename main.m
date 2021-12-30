@@ -18,15 +18,18 @@ t = 0:1/info.SampleRate:info.Duration;
 % sound(2.*mtc,fs);
 % pause(info.Duration);
 
-%Coherent detection of DSB-SC with SNO = 0
+% Coherent detection of DSB-SC with no noise
 demodSig = coherentDetector(dsbsc, info, fc, 0);
 % sound(demodSig, fs);
 % pause(info.Duration);
 
-%Coherent detection of DSB-SC with SNO = 10dB
+%Coherent detection of DSB-SC with SNR = 0dB
 
 
-%Coherent detection of DSB-SC with SNO = 30dB
+%Coherent detection of DSB-SC with SNR = 10dB
+
+
+%Coherent detection of DSB-SC with SNR = 30dB
 
 
 %Coherent detection of DSB-SC with frequency error, fc = 100.1KHz
