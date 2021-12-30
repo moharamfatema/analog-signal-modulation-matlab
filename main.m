@@ -24,13 +24,24 @@ demodSig = coherentDetector(dsbsc, info, fc, 0);
 % pause(info.Duration);
 
 %Coherent detection of DSB-SC with SNR = 0dB
-
+noisySig1 = awgn(dsbsc, 0, 'measured', 'dB');
+demodSig = coherentDetector(noisySig1, info, fc, 0);
+% sound(demodSig, fs);
+% pause(info.Duration);
 
 %Coherent detection of DSB-SC with SNR = 10dB
-
+noisySig2 = awgn(dsbsc, 10, 'measured', 'dB');
+demodSig = coherentDetector(noisySig2, info, fc, 0);
+% sound(demodSig, fs);
+% pause(info.Duration);
 
 %Coherent detection of DSB-SC with SNR = 30dB
+noisySig3 = awgn(dsbsc, 30, 'measured', 'dB');
+demodSig = coherentDetector(noisySig3, info, fc, 0);
+% sound(demodSig, fs);
+% pause(info.Duration);
 
+%NOTE: sound starts to be clear starting from 70dB
 
 %Coherent detection of DSB-SC with frequency error, fc = 100.1KHz
 demodSig = coherentDetector(dsbsc, info, 100.1 * 10^3, 0);
