@@ -6,10 +6,11 @@ t = 0:1/info.SampleRate:info.Duration;
 
 msc = abs(hilbert(dsbsc));
 mtc = abs(hilbert(dsbtc));
+mtc = mtc - abs(mean (mtc));
 
 [p , q] = rat(info.SampleRate / (5*fc));
-msc = resample(msc,p,q);
-mtc = resample(mtc,p,q);
+msc = resample(msc,info.SampleRate,5*fc);
+mtc = resample(mtc,info.SampleRate,5*fc);
 mtc = lowpass(mtc,4000,info.SampleRate);
 
 %plotting in time domain
@@ -25,11 +26,10 @@ mtc = lowpass(mtc,4000,info.SampleRate);
 % title('DSB-TC with envelope detector');
 % 
 % sgtitle('Amplitude Demodulation');
-c = cos(2*pi*fc*t);
-msc = resample(dsbsc,p,q);
-msc = msc.*c;
+% c = cos(2*pi*fc*t);
+% msc = msc.*c;
 %amplify and filter
-msc = 10000.*lowpass(msc,4000,info.SampleRate);
+% msc = 10000.*lowpass(msc,4000,info.SampleRate);
 
 %plotTimeFrequency(msc,"DSBSC coherent",1,1,1,info);
 end
