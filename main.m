@@ -17,23 +17,23 @@ plotTimeFrequency(dsbtc, info, 5*fc, " DSB-TC", 2, 1, 1)
 
 [msc, mtc] = AMreceiver(dsbsc,dsbtc,info,fc);
 plotTimeFrequency(msc, info, fs, " Received signal from DSB-SC", 2, 1, 1)
-% sound(msc,fs);
+sound(msc,fs);
 
 plotTimeFrequency(mtc, info, fs, " Received signal from DSB-TC", 2, 1, 1)
-% sound(2.*mtc,fs);
+sound(2.*mtc,fs);
 
 % pause(info.Duration);
 
 % Coherent detection of DSB-SC with no noise
 demodSig = coherentDetector(dsbsc, info, fc, 0);
 plotTimeFrequency(demodSig, info, fs, " Coherent detection of DSB-SC with no noise", 2, 1, 1)
-% % sound(demodSig, fs);
+% sound(demodSig, fs);
 
 %Coherent detection of DSB-SC with SNR = 0dB
 noisySig1 = awgn(dsbsc, 0, 'measured', 'dB');
 demodSig = coherentDetector(noisySig1, info, fc, 0);
 plotTimeFrequency(demodSig, info, fs, " Coherent detection of DSB-SC with SNR = 0dB", 2, 1, 1)
-% % sound(demodSig, fs);
+% sound(demodSig, fs);
 
 %Coherent detection of DSB-SC with SNR = 10dB
 noisySig2 = awgn(dsbsc, 10, 'measured', 'dB');
