@@ -12,6 +12,6 @@ s = generateSignal(info, fs, fc, phaseshift);
 demodSig = dsbsc.*s;
 
 %lowpass filter to remove higher frequency term
-demodSig = 10000.*IdealLowpassFilter(demodSig', fs, 4000);
+demodSig = 10000.*LowpassFilter(demodSig', fs, 4000);
 
 end

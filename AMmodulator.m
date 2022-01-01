@@ -2,7 +2,7 @@ function [dsbsc,dsbtc] = AMmodulator(m,info,fc)
 
 fs = info.SampleRate;
 %filter the signal at fcutoff = 4kHz
-m = IdealLowpassFilter(m, fs, 4000);
+m = LowpassFilter(m, fs, 4000);
 
 sound(m,fs);
 plotTimeFrequency(m, info, fs, "filtered message", 2, 1, 1);
