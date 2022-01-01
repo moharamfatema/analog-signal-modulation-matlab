@@ -4,13 +4,13 @@
 x=audioread('eric.wav')';
 x=transpose(x);
 
-fs=48000; %sampling freq  
+Fs=48000; %sampling freq  
 N=411248;  % no of samples
-Ts=1/fs;     
+Ts=1/Fs;     
 n=0:1:(N-1);
 t=n*Ts;
 k=-N/2:1:N/2-1;
-f=(fs/N)*k;
+f=(Fs/N)*k;
 
 xf=fftshift(fft(x));   %fourier transform of x(t)/X(f)
 xfm=abs(xf);           %|X(f)|
