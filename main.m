@@ -88,10 +88,11 @@ plotTimeFrequency(demodSig, info, fs, " Coherent detection of DSB-SC with phase 
 
 %-----------------------------------PART 3-----------------------------------
 nbfm = FMmodulator(m,info,fc);
-% plotTimeFrequency(nbfm, info, fs, " NBFM", 2, 1, 1)
+plotTimeFrequency(nbfm, info, 5*fc, " NBFM", 2, 1, 1);
 
 mfm = FMreceiver(nbfm,info,fc);
-% plotTimeFrequency(nbfm, info, fs, " Received from NBFM", 2, 1, 1)
+plotTimeFrequency(mfm, info, fs, " Received from NBFM", 2, 1, 1);
+sound(mfm, fs);
 
 %----------------------------------------------------------------------------
 

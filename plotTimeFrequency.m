@@ -6,7 +6,7 @@ subplot(rows,columns,no);
 % messageTime = messageTime(1:duration);
 t = 0:1/fs:info.Duration;
 % t = t(1:end-1);
-while length(t) ~= length(messageTime)
+if length(t) ~= length(messageTime)
     t = t(1:end-1);
 end 
 plot(t,messageTime);
