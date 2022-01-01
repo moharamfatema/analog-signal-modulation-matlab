@@ -2,13 +2,16 @@ function [dsbsc,dsbtc] = AMmodulator(m,info,fc)
 
 fs = info.SampleRate;
 %filter the signal at fcutoff = 4kHz
-m = lowpass(m,4000,fs);
+m = IdealLowpassFilter(m, fs, 4000);
+
 sound(m,fs);
+plotTimeFrequency(m, info, fs, "filtered message", 2, 1, 1);
 
 %resample m
-[p,q] = rat(5.*fc/fs);
-m = resample(m,p,q);
-fs = fs * p / q;
+% [p,q] = rat(5.*fc/fs);
+m = resample(m,5*fc,fs);
+% fs = f * p / q;
+fs  = 5*fc;
 
 %generate carrier
 c = generateSignal(info, fs, fc, 0);

@@ -1,20 +1,19 @@
 function nbfm = FMmodulator(m,info,fc)
 
 fs = info.SampleRate;
-fs_new = 5*fc;
+fsnew = 5*fc;
 
-m = m';
-y_res = resample(m,fs_new,fs);
-y_sum = cumsum(y_res);
-t = linspace(0,length(y_sum)/fs_new,length(y_sum));
-Kf = 73.1;
-nbfm = cos(2*pi*fc*t + Kf*y_sum);
-nbfm_mod = fftshift(fft(nbfm)/fs_new);
-f = linspace(-fs_new/2,fs_new/2,length(nbfm_mod));
+mnew = resample(m',fsnew,fs);
+msum = cumsum(mnew);
+t = linspace(0,length(msum)/fsnew,length(msum));
+Kf = 73.1; % (kf*max(msum)/(2*pi*fm) << 1)
+nbfm = cos(2*pi*fc*t + Kf*msum);
+% nbfm_mod = fftshift(fft(nbfm)/fsnew);
+% f = linspace(-fsnew/2,fsnew/2,length(nbfm_mod));
 
-figure
-plot(f,nbfm_mod);
-title("NBFM in frequency domain");
+% figure
+% plot(f,nbfm_mod);
+% title("NBFM in frequency domain");
 
 end
 
