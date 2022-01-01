@@ -1,5 +1,4 @@
-      
-function y = IdealLowpassFilter(signal,fc,Fs)
+
 
 
 x=audioread('eric.wav')';
@@ -26,5 +25,4 @@ yfm=abs(yf);      % |Y(f)|
 y=ifft(ifftshift(yf));
 
    
-end
 
