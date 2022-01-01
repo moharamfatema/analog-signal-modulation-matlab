@@ -8,11 +8,10 @@ msc = abs(hilbert(dsbsc));
 mtc = abs(hilbert(dsbtc));
 mtc = mtc - abs(mean (mtc));
 
-% [p , q] = rat(info.SampleRate / (5*fc));
+[p , q] = rat(info.SampleRate / (5*fc));
 msc = resample(msc,info.SampleRate,5*fc);
 mtc = resample(mtc,info.SampleRate,5*fc);
-mtc = LowPassFilter(mtc',info.SampleRate, 4000);
-msc = LowPassFilter(msc',info.SampleRate, 4000);
+mtc = lowpass(mtc,4000,info.SampleRate);
 
 %plotting in time domain
 

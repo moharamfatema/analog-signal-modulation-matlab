@@ -9,6 +9,7 @@ fc = 100000;
 plotTimeFrequency(m, info, fs, " Message Signal", 2, 1, 1)
 % % sound(m, fs);
 
+
 %-----------------------------------PART 1-----------------------------------
 [dsbsc,dsbtc] = AMmodulator(m,info,fc);
 % plotNineTimeFrequency(m,dsbsc,dsbtc,'Amplitude Modulation','Original message signal','DSB-SC modulated signal','DSB-TC modulated signal');
@@ -61,29 +62,16 @@ plotTimeFrequency(demodSig, info, fs, " Coherent detection of DSB-SC with phase 
 
 %----------------------------------------------------------------------------
 
-
 %-----------------------------------PART 2-----------------------------------
-% [Issbsc,ssbsc,ssbtc] = SSBmodulator(m,info,fc);
-% [mIsc,msc,mtc] = SSBreceiver(Issbsc,ssbsc,ssbtc,info,fc);
-% 
-% % sound(mIsc,fs);             %requiered in the pdf
-% % sound(msc,fs);              %requiered in the pdf
-% plotSignal(fs,mIsc);        %requiered in the pdf
-% plotSignal(fs,msc);         %requiered in the pdf
-
-% ssbN1 = awgn(mIsc,0);        %received signal from SSB modulation + noise 1
-% ssbN2 = awgn(mIsc,10);       %received signal from SSB modulation + noise 2
-% ssbN3 = awgn(mIsc,30);       %received signal from SSB modulation + noise 3
-
-% % sound(ssbN1,fs);              %requiered in the pdf
-% % sound(ssbN2,fs);              %requiered in the pdf
-% % sound(ssbN3,fs);              %requiered in the pdf
-% plotSignal(fs,ssbN1);         %requiered in the pdf
-% plotSignal(fs,ssbN2);         %requiered in the pdf
-% plotSignal(fs,ssbN3);         %requiered in the pdf
-% 
-% % sound(mtc,fs);              %requiered in the pdf
-% plotSignal(fs,mtc);         %requiered in the pdf
+question1(m,info);
+question2(info);
+question3(m,info);
+question4(m);
+question5(m);
+question6(m,info);
+question7(m,info);
+question8(m,info);
+question9(m,info);
 %----------------------------------------------------------------------------
 
 %-----------------------------------PART 3-----------------------------------
